@@ -571,6 +571,70 @@ ICT security specialist
 computer network and systems engineer
 telecommunications engineer
 telecommunications network engineer
+public relations manager
+policy and planning manager
+project builder
+procurement manager
+medical administrator
+regional education manager
+sports administrator
+caravan park and camping ground manager
+post office manager
+amusement centre manager
+fitness centre manager
+sports centre manager
+cinema or theatre manager
+financial institution branch manager
+human resource adviser
+workplace relations adviser
+policy analyst
+liaison officer
+market research analyst
+vocational education teacher / polytechnic teacher
+first aid trainer
+driving instructor
+environmental health officer
+dentist
+anaesthetist
+exercise physiologist
+clinical coder
+operating theatre technician
+pathology collector / phlebotomist
+dental hygienist
+dental therapist
+construction estimator
+surveying or spatial science technician
+mechanical engineering draftsperson
+safety inspector
+maintenance planner
+building and engineering technicians (nec)
+electrical linesworker / electrical line mechanic
+cotton grower
+fruit or nut grower
+grain, oilseed or pasture grower
+mixed crop farmer
+sugar cane grower
+crop farmers (nec)
+deer farmer
+goat farmer
+mixed livestock farmer
+livestock farmers (nec)
+mixed crop and livestock farmer
+nurseryperson
+zookeeper
+wine maker
+conservation officer
+gas or petroleum operator
+funeral workers (nec)
+flight attendant
+jockey
+aeroplane pilot
+flying instructor
+helicopter pilot
+ship’s master
+multimedia designer
+community arts worker
+agricultural technician
 `;
 
 // Helper to determine category for leftovers

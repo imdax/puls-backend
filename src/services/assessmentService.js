@@ -21,8 +21,11 @@ const rules = [
             // Since user.profession is free text but we want to validate it, 
             // we'll check if a Profession document exists with that name (case-insensitive regex).
 
+            // Escape special characters to prevent regex errors
+            const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
             const professionExists = await Profession.findOne({
-                name: { $regex: new RegExp(`^${user.profession}$`, 'i') }
+                name: { $regex: new RegExp(`^${escapeRegExp(user.profession)}$`, 'i') }
             });
 
             if (!professionExists) {

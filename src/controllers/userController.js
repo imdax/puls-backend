@@ -32,25 +32,23 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ success: false, message: `Missing required fields: ${missingFields.join(', ')}` });
         }
 
-        // Check if user exists
-        const userExists = await User.findOne({ email });
-        if (userExists) {
-            console.log('User already exists:', email);
-            return res.status(400).json({ success: false, message: 'User already exists' });
-        }
+        // Upsert user: Update if exists, Create if not
+        // This handles "submission failed" on duplicate emails by simply updating the user's info
+        const user = await User.findOneAndUpdate(
+            { email },
+            {
+                fullName,
+                email,
+                phone,
+                age,
+                country,
+                profession,
+                ...otherFields
+            },
+            { new: true, upsert: true, setDefaultsOnInsert: true }
+        );
 
-        // Create user with ALL extra fields (strict: false in model handles this)
-        const user = await User.create({
-            fullName,
-            email,
-            phone,
-            age,
-            country,
-            profession,
-            ...otherFields
-        });
-
-        res.status(201).json({
+        res.status(200).json({
             success: true,
             message: 'User registered successfully',
             data: {
@@ -66,6 +64,7 @@ const registerUser = async (req, res) => {
             message: 'Server Error',
             error: error.message
         });
+        console.error('Registration Error:', error);
     }
 };
 

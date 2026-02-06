@@ -43,6 +43,7 @@ const startAssessment = async (req, res) => {
             message: 'Server Error',
             error: error.message
         });
+        console.error('Assessment Error:', error);
     }
 };
 

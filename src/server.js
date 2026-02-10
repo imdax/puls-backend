@@ -63,6 +63,9 @@ app.use("/api/assessment", require("./routes/assessmentRoutes"));
 
 /* ---------------- COMPANY & JOB ROUTES ---------------- */
 app.use("/api/company", require("./routes/company.routes"));
+// Alias for frontend requests missing /api prefix
+app.use("/company", require("./routes/company.routes"));
+
 app.use("/api/jobs", require("./routes/job.routes"));
 
 /* ---------------- SERVER ---------------- */

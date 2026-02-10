@@ -6,7 +6,7 @@ const User = require('../models/User');
 const registerUser = async (req, res) => {
     try {
         let { fullName, firstName, lastName, email, phone, age, country, profession, ...otherFields } = req.body;
-        console.log('Received Registration Request:', req.body);
+        console.log('Received Registration Request:', JSON.stringify(req.body, null, 2));
 
         // Handle firstName + lastName -> fullName
         if (!fullName && firstName && lastName) {
@@ -17,6 +17,29 @@ const registerUser = async (req, res) => {
         if (!fullName) {
             fullName = req.body.fullname || req.body.name;
         }
+
+        // --- ROBUST PROFESSION HANDLING ---
+        // Identify if profession is an object (common with some dropdown libraries)
+        if (profession && typeof profession === 'object') {
+            console.log('Profession received as object:', profession);
+            profession = profession.name || profession.label || profession.value || profession.id || null;
+        } else if (!profession) {
+            // Fallback: check for professionName or professionId in top-level body
+            profession = req.body.professionName || req.body.professionId;
+        }
+
+        // Ensure profession is a simple string now
+        if (typeof profession !== 'string') {
+            // If we failed to extract a string, set to null so validation catches it cleanly
+            // or keep it as is if it's undefined, to let validation handle "missing"
+            if (profession) {
+                console.warn('Profession field present but not a string after parsing:', profession);
+                // Optional: force string if it's a number? 
+                profession = String(profession);
+            }
+        }
+        console.log('Parsed Profession:', profession);
+        // ----------------------------------
 
         // Basic Validation
         const missingFields = [];

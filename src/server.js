@@ -67,6 +67,7 @@ app.use("/api/company", require("./routes/company.routes"));
 app.use("/company", require("./routes/company.routes"));
 
 app.use("/api/jobs", require("./routes/job.routes"));
+app.use("/jobs", require("./routes/job.routes"));
 
 /* ---------------- SERVER ---------------- */
 const PORT = process.env.PORT || 5000;

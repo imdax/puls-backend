@@ -48,6 +48,12 @@ const registerCompany = async (req, res) => {
                 _id: company.id,
                 companyName: company.companyName,
                 email: company.email,
+                phone: company.phone,
+                industry: company.industry,
+                companySize: company.companySize,
+                location: company.location,
+                website: company.website,
+                description: company.description,
                 token: generateToken(company._id)
             });
         } else {
@@ -73,6 +79,12 @@ const loginCompany = async (req, res) => {
                 _id: company.id,
                 companyName: company.companyName,
                 email: company.email,
+                phone: company.phone,
+                industry: company.industry,
+                companySize: company.companySize,
+                location: company.location,
+                website: company.website,
+                description: company.description,
                 token: generateToken(company._id)
             });
         } else {
